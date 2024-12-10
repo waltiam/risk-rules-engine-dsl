@@ -1,3 +1,6 @@
+; (in-package "common-lisp-user")
+(unlock-package "SB-ALIEN")
+
 (defun double (x) (* 2 x))
 
 (defun fib (limit)
@@ -17,3 +20,16 @@
 (setq double 4)
 
 (pprint (double double))
+
+(double double)
+
+; compilation
+
+(defun foo (X) (1+ x))
+
+(defun powers (x)
+  (values x (sqrt x) (expt x 2)))
+
+; imperative
+; (defun fun (x) 
+;   (list 'a (expt (car x) 2)))
