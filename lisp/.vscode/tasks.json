@@ -4,7 +4,8 @@
         {
             "label": "sbcl",
             "type": "shell",
-            "command":"sbcl --script '${file}'",
+            "command":"sbcl --noinform --script '${file}'",
+            // "command":"sbcl --noinform --load 'hack-butt.asd' --script '${file}'",
             "problemMatcher":[],
             "group":{
                 "kind": "build",

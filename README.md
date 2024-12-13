@@ -18,20 +18,20 @@ We would also need to define the evaluation data and the standard data.
 
 All the rules take the form:
 
-```
+```sh
 All {evaluation data} meet {predicate} then {risk result}
 Any {evaluation data} meet {predicate} then {risk result}
 None {evaluation data} meet {predicate} then {risk result}
 ```
 
-The {predicates} are `closures` such as `in list of [...]`, 
+The {predicates} are `closures` such as `in list of [...]`
 
 - `All`, by design returns true if the evaluation data list is empty.
 - `Any`, by design returns false if the evaluation data list is empty.
 
 Further generalization of the rules becomes:
 
-```
+```sh
 When {item} {predicate} then {risk result}
 ```
 
@@ -49,3 +49,82 @@ Where:
   - score (0 to 100)
   - value (low, medium, high, etc)
   - list of evidence (open records)
+
+## Model definition
+
+In addition to defining the rules it will be required to define the models in play, for example:
+
+```yaml
+--- # evaluation model definitions
+name: Country of Primary Address
+fields:
+- name: Name
+  type: string
+- name: Description
+  type: string
+---
+name: Primary Industry
+fields: 
+- name: Naics Code
+  type: string
+- name: Description
+  type: string
+```
+
+```yaml
+--- # standard model defintion
+name: Country
+fields:
+- name: Name
+  type: string
+- name: 
+```
+
+## Alternately
+
+Standard data defined in a yaml file:
+
+```yml
+---
+CountryRatings
+- name:        Gondor
+  code:        GON
+  score:       85
+  restriction: Sanctioned
+- name:        Mordor
+  code:        MOR
+  score:       45
+  restriction: Unrestricted
+- name:        Elbonia
+  code:        ELB
+  score:       20
+  restriction: Unrestrictyed
+- name:        Whoville
+  code:        WHO
+  score:       55
+  restriction: Unrestricted
+- name:        Terabithinia
+  code:        TER
+  score:       25
+  restriction: Unrestricted
+- name:        El Dorado
+  code:        ELD
+  score:       35
+  restriction: Sanctioned
+- name:        Atlantis
+  code:        ATL
+  score:       90
+  restriction: Prohibited
+- name:        Borduria
+  code:        BOR
+  score:       95
+  restriction: Prohibited
+# - name:        Mare Tranquillitats
+#   code:        SOT
+#   score:       0
+#   restriction: Unrestricted
+# - name:        Shangri-la
+#   code:        SGL
+#   score:       0
+#   restriction: Unrestricted
+```
